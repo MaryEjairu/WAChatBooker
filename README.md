@@ -38,7 +38,7 @@ A complete WhatsApp appointment booking bot built with Flask and Twilio's WhatsA
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/MaryEjairu/WAChatBooker.git
-   cd WAChatBooker.git
+   cd WAChatBooker
    ```
 
 
