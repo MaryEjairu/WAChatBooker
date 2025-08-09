@@ -32,39 +32,42 @@ A complete WhatsApp appointment booking bot built with Flask and Twilio's WhatsA
 - Twilio account with WhatsApp sandbox setup
 - Replit environment (recommended)
 
-### 1. Twilio Setup
-1. Create a Twilio account at [twilio.com](https://twilio.com)
-2. Go to Console → Messaging → Try it out → Send a WhatsApp message
-3. Follow the WhatsApp sandbox setup instructions
-4. Note down your credentials:
-   - Account SID
-   - Auth Token  
-   - WhatsApp phone number (format: whatsapp:+1234567890)
 
-### 2. Environment Variables
-Set these environment variables in your Replit Secrets:
-```
-TWILIO_ACCOUNT_SID=your_account_sid_here
-TWILIO_AUTH_TOKEN=your_auth_token_here
-TWILIO_PHONE_NUMBER=whatsapp:+1234567890
-```
+### 🚀 Automated Setup 
 
-### 3. Run the Application
-The application is already configured to run on port 5000:
-```bash
-python main.py
-```
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/MaryEjairu/WAChatBooker.git
+   cd WAChatBooker.git
+   ```
 
-Or use the provided workflow:
-```bash
-gunicorn --bind 0.0.0.0:5000 --reuse-port --reload main:app
-```
 
-### 4. Configure Twilio Webhook
-1. In your Twilio Console, go to Phone Numbers → Manage → WhatsApp sandbox
-2. Set the webhook URL to: `https://your-replit-url.replit.app/webhook`
-3. Set HTTP method to POST
-4. Save the configuration
+
+2. **Configure environment variables**:
+   ```bash
+   cp .env.template .env
+   # Edit .env file with your Twilio credentials
+   ```
+
+3. **Run automated setup**:
+   ```bash
+   python setup.py
+   ```
+
+4. **Start the application**:
+   ```bash
+   python main.py
+   ```
+
+   ### 📱 Twilio Setup
+
+1. **Create Twilio Account**: Visit [twilio.com](https://twilio.com) and sign up
+2. **WhatsApp Sandbox**: Go to Console → Messaging → Try it out → Send a WhatsApp message
+3. **Get Credentials**: Copy your Account SID, Auth Token, and WhatsApp phone number
+4. **Configure Webhook**: 
+   - URL: `https://your-domain.com/webhook`
+   - Method: POST
+   - Save configuration
 
 ## Usage Examples
 
@@ -131,14 +134,20 @@ Health check endpoint to verify the application is running.
 ## Project Structure
 
 ```
-├── app.py              # Flask application setup and webhook endpoint
-├── bot_handler.py      # Main message processing logic
-├── models.py           # SQLAlchemy database models
-├── date_utils.py       # Date/time validation and formatting utilities
-├── main.py             # Application entry point
-├── pyproject.toml      # Python dependencies
-└── README.md           # This documentation
+├── app.py                      # Flask application setup and webhook endpoint
+├── bot_handler.py              # Main message processing logic  
+├── models.py                   # SQLAlchemy database models
+├── date_utils.py               # Date/time validation and formatting utilities
+├── main.py                     # Application entry point
+├── setup.py                    # Automated setup script
+├── requirements.txt   # Python dependencies 
+├── .env.template               # Environment variables template
+├── .gitignore                  # Git ignore file
+├── pyproject.toml              # Python project configuration
+├── replit.md                   # Technical architecture documentation
+└── README.md                   # This documentation
 ```
+
 
 ## Database Schema
 
@@ -223,13 +232,6 @@ The application includes comprehensive logging. Check the console output for:
 - Error messages
 - Database operations
 
-## Deployment
-
-### Replit Deployment
-1. Ensure all environment variables are set in Replit Secrets
-2. Click the "Deploy" button in Replit
-3. Update your Twilio webhook URL to the deployed URL
-4. Test the deployment with WhatsApp messages
 
 ### Production Considerations
 - Use PostgreSQL instead of SQLite for production
